@@ -1,0 +1,588 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/STRML/JSXHint">jsxhint (v0.15.1)</a>
+</h1>
+<h4>Wrapper for JSHint to allow hinting of JSX files</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.jsxhint">module jsxhint</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.transformFiles">
+            function <span class="apidocSignatureSpan">jsxhint.</span>transformFiles
+            <span class="apidocSignatureSpan">(files, jsxhintOpts, jshintOpts, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.transformJSX">
+            function <span class="apidocSignatureSpan">jsxhint.</span>transformJSX
+            <span class="apidocSignatureSpan">(fileStream, fileName, opts, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.transformStream">
+            function <span class="apidocSignatureSpan">jsxhint.</span>transformStream
+            <span class="apidocSignatureSpan">(fileStream, jsxhintOpts, jshintOpts, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">jsxhint.</span>utils</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">jsxhint.</span>tmpdir</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.jsxhint.utils">module jsxhint.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.utils.copyConfig">
+            function <span class="apidocSignatureSpan">jsxhint.utils.</span>copyConfig
+            <span class="apidocSignatureSpan">(dir, file)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.utils.createTempFile">
+            function <span class="apidocSignatureSpan">jsxhint.utils.</span>createTempFile
+            <span class="apidocSignatureSpan">(fileName, contents)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.utils.createTempFiles">
+            function <span class="apidocSignatureSpan">jsxhint.utils.</span>createTempFiles
+            <span class="apidocSignatureSpan">(fileNames, fileContents)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.utils.drainStream">
+            function <span class="apidocSignatureSpan">jsxhint.utils.</span>drainStream
+            <span class="apidocSignatureSpan">(stream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.utils.ensureJshintrcOverrides">
+            function <span class="apidocSignatureSpan">jsxhint.utils.</span>ensureJshintrcOverrides
+            <span class="apidocSignatureSpan">(jshintrc)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.utils.getCleanAbsolutePath">
+            function <span class="apidocSignatureSpan">jsxhint.utils.</span>getCleanAbsolutePath
+            <span class="apidocSignatureSpan">(fileName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsxhint.utils.transformError">
+            function <span class="apidocSignatureSpan">jsxhint.utils.</span>transformError
+            <span class="apidocSignatureSpan">(fileName, error, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">jsxhint.utils.</span>tmpdir</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.jsxhint" id="apidoc.module.jsxhint">module jsxhint</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.transformFiles" id="apidoc.element.jsxhint.transformFiles">
+        function <span class="apidocSignatureSpan">jsxhint.</span>transformFiles
+        <span class="apidocSignatureSpan">(files, jsxhintOpts, jshintOpts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function transformFiles(files, jsxhintOpts, jshintOpts, cb){
+  return Promise.map(files, function(fileName) {
+    return transformJSX(fileName, jsxhintOpts);
+  })
+  .then(function(filesContents) {
+    debug("Successfully transformed %d files to JSX.", files.length);
+
+    var tempFileNames = utils.createTempFiles(files, filesContents);
+    debug("Moved %d files to temp directory at %s.", files.length, exports.tmpdir);
+    // Create map of temp file names to original file names
+    var fileNameMap = {};
+    files.forEach(function(fileName, index){
+      fileNameMap[tempFileNames[index]] = fileName;
+    });
+    return fileNameMap;
+  })
+  .nodeify(cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.transformJSX" id="apidoc.element.jsxhint.transformJSX">
+        function <span class="apidocSignatureSpan">jsxhint.</span>transformJSX
+        <span class="apidocSignatureSpan">(fileStream, fileName, opts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function transformJSX(fileStream, fileName, opts, cb){
+
+  // Allow omitting filename
+  if (typeof fileName === "object"){
+    cb = opts;
+    opts = fileName;
+    fileName = fileStream;
+  }
+
+  if (!babel &amp;&amp; (opts['--babel'] || opts['--babel-experimental'])) {
+    throw new Error("Optional babel parser not installed. Please `npm install [-g] babel`.");
+  }
+
+  // Allow passing strings into this method e.g. when using it as a lib
+  if (typeof fileStream === "string"){
+    fileStream = fs.createReadStream(fileStream, {encoding: "utf8"});
+  }
+
+  return utils.drainStream(fileStream)
+  .then(function processFile(source) {
+    var hasExtension = /\.jsx$/.exec(fileName) || fileName === "stdin";
+    // console.error('has extension', hasExtension);
+    // console.log(fileName);
+    if ((opts['--jsx-only'] &amp;&amp; hasExtension) || !opts['--jsx-only']) {
+      try {
+        return transformSource(source, opts);
+      } catch(e) {
+        // Seems that esprima has some problems with some js syntax.
+        if (opts['--transform-errors'] === 'always' ||
+            (opts['--transform-errors'] !== 'never' &amp;&amp; hasExtension)) {
+          console.error("Error while transforming file " + fileName + "\n", e.stack);
+          throw utils.transformError(fileName, e, opts);
+        }
+      }
+    }
+    return source;
+  })
+  .nodeify(cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.transformStream" id="apidoc.element.jsxhint.transformStream">
+        function <span class="apidocSignatureSpan">jsxhint.</span>transformStream
+        <span class="apidocSignatureSpan">(fileStream, jsxhintOpts, jshintOpts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function transformStream(fileStream, jsxhintOpts, jshintOpts, cb){
+  // JSHint now supports a '--filename' option for stdin, allowing overrides to work properly.
+  var fileName = jshintOpts &amp;&amp; jshintOpts.filename.replace(process.cwd(), '') || 'stdin';
+
+  return transformJSX(fileStream, fileName, jsxhintOpts)
+  .then(function(contents){
+    var tempFileName = utils.createTempFile(path.join(process.cwd(), fileName), contents);
+    var out = {};
+    out[tempFileName] = fileName;
+    return out;
+  })
+  .nodeify(cb);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.jsxhint.utils" id="apidoc.module.jsxhint.utils">module jsxhint.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.utils.copyConfig" id="apidoc.element.jsxhint.utils.copyConfig">
+        function <span class="apidocSignatureSpan">jsxhint.utils.</span>copyConfig
+        <span class="apidocSignatureSpan">(dir, file)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function copyConfig(dir, file){
+  var filePath = path.resolve(dir, file);
+  if (checkedSupportFiles[filePath]) return;
+  // Indicate that this is copied already to prevent unnecessary file operations.
+  checkedSupportFiles[filePath] = true;
+
+  if (fs.existsSync(filePath)) {
+    var destination = path.join(utils.tmpdir, utils.getCleanAbsolutePath(filePath));
+    debug("Copying support file from %s to temp directory at %s.", filePath, destination);
+    if (file === '.jshintrc') {
+      try {
+        var jshintrc = jshintcli.loadConfig(filePath);
+        fs.writeJSONSync(destination, utils.ensureJshintrcOverrides(jshintrc));
+      } catch(e) {
+        console.error('Unable to parse .jshintrc file at %s. It must be valid JSON. Error: %s', filePath, e.message);
+        return;
+      }
+    } else {
+      fs.copySync(filePath, destination);
+    }
+  }
+  // Not found, keep looking up the root.
+  else {
+    var parent = path.resolve(dir, '..');
+    // Return null at the root, which is also when dir and its parent are the same.
+    if (dir === parent) return;
+    return copyConfig(parent, file);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // Write the file to the temp directory.
+  // outputFile is from fs-extra and will mkdirp() automatically.
+  fs.outputFileSync(fileTempDestination, contents);
+
+  // For every file, we need to go up the path to find .jshintrc and package.json files, since
+  // they can modify the lint.
+  var dir = path.dirname(fileName);
+  utils.<span class="apidocCodeKeywordSpan">copyConfig</span>(dir, '.jshintrc');
+  utils.copyConfig(dir, 'package.json');
+  return fileTempDestination;
+},
+
+/**
+ * Given a list of filenames and their contents, write temporary files
+ * to disk.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.utils.createTempFile" id="apidoc.element.jsxhint.utils.createTempFile">
+        function <span class="apidocSignatureSpan">jsxhint.utils.</span>createTempFile
+        <span class="apidocSignatureSpan">(fileName, contents)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createTempFile(fileName, contents){
+  fileName = utils.getCleanAbsolutePath(fileName);
+  var fileTempDestination = path.join(utils.tmpdir, fileName);
+
+  // Write the file to the temp directory.
+  // outputFile is from fs-extra and will mkdirp() automatically.
+  fs.outputFileSync(fileTempDestination, contents);
+
+  // For every file, we need to go up the path to find .jshintrc and package.json files, since
+  // they can modify the lint.
+  var dir = path.dirname(fileName);
+  utils.copyConfig(dir, '.jshintrc');
+  utils.copyConfig(dir, 'package.json');
+  return fileTempDestination;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ */
+function transformStream(fileStream, jsxhintOpts, jshintOpts, cb){
+  // JSHint now supports a '--filename' option for stdin, allowing overrides to work properly.
+  var fileName = jshintOpts &amp;&amp; jshintOpts.filename.replace(process.cwd(), '') || 'stdin';
+
+  return transformJSX(fileStream, fileName, jsxhintOpts)
+  .then(function(contents){
+    var tempFileName = utils.<span class="apidocCodeKeywordSpan">createTempFile</span>(path.join(process.cwd(), fileName), contents
+);
+    var out = {};
+    out[tempFileName] = fileName;
+    return out;
+  })
+  .nodeify(cb);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.utils.createTempFiles" id="apidoc.element.jsxhint.utils.createTempFiles">
+        function <span class="apidocSignatureSpan">jsxhint.utils.</span>createTempFiles
+        <span class="apidocSignatureSpan">(fileNames, fileContents)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createTempFiles(fileNames, fileContents){
+  return fileNames.map(function(fileName) {
+    return utils.createTempFile(fileName, fileContents[fileNames.indexOf(fileName)]);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+function transformFiles(files, jsxhintOpts, jshintOpts, cb){
+  return Promise.map(files, function(fileName) {
+return transformJSX(fileName, jsxhintOpts);
+  })
+  .then(function(filesContents) {
+debug("Successfully transformed %d files to JSX.", files.length);
+
+var tempFileNames = utils.<span class="apidocCodeKeywordSpan">createTempFiles</span>(files, filesContents);
+debug("Moved %d files to temp directory at %s.", files.length, exports.tmpdir);
+// Create map of temp file names to original file names
+var fileNameMap = {};
+files.forEach(function(fileName, index){
+  fileNameMap[tempFileNames[index]] = fileName;
+});
+return fileNameMap;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.utils.drainStream" id="apidoc.element.jsxhint.utils.drainStream">
+        function <span class="apidocSignatureSpan">jsxhint.utils.</span>drainStream
+        <span class="apidocSignatureSpan">(stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function drainStream(stream) {
+  return new Promise(function(resolve, reject) {
+    // Drain stream
+    var source = '';
+    stream.on('data', function(chunk){
+      source += chunk;
+    });
+    stream.on('end', function() {
+      resolve(source);
+    });
+    stream.on('error', reject);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+// Allow passing strings into this method e.g. when using it as a lib
+if (typeof fileStream === "string"){
+  fileStream = fs.createReadStream(fileStream, {encoding: "utf8"});
+}
+
+return utils.<span class="apidocCodeKeywordSpan">drainStream</span>(fileStream)
+.then(function processFile(source) {
+  var hasExtension = /\.jsx$/.exec(fileName) || fileName === "stdin";
+  // console.error('has extension', hasExtension);
+  // console.log(fileName);
+  if ((opts['--jsx-only'] &amp;&amp; hasExtension) || !opts['--jsx-only']) {
+    try {
+      return transformSource(source, opts);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.utils.ensureJshintrcOverrides" id="apidoc.element.jsxhint.utils.ensureJshintrcOverrides">
+        function <span class="apidocSignatureSpan">jsxhint.utils.</span>ensureJshintrcOverrides
+        <span class="apidocSignatureSpan">(jshintrc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ensureJshintrcOverrides(jshintrc) {
+  if (!jshintrc.overrides) return jshintrc;
+  var base = path.join(utils.tmpdir, process.cwd());
+  jshintrc.overrides = Object.keys(jshintrc.overrides).reduce(function(memo, key) {
+    memo[path.join(base, key)] = jshintrc.overrides[key];
+    return memo;
+  }, {});
+  return jshintrc;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    if (fs.existsSync(filePath)) {
+var destination = path.join(utils.tmpdir, utils.getCleanAbsolutePath(filePath));
+debug("Copying support file from %s to temp directory at %s.", filePath, destination);
+if (file === '.jshintrc') {
+  try {
+    var jshintrc = jshintcli.loadConfig(filePath);
+    fs.writeJSONSync(destination, utils.<span class="apidocCodeKeywordSpan">ensureJshintrcOverrides</span>(jshintrc));
+  } catch(e) {
+    console.error('Unable to parse .jshintrc file at %s. It must be valid JSON. Error: %s', filePath, e.message);
+    return;
+  }
+} else {
+  fs.copySync(filePath, destination);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.utils.getCleanAbsolutePath" id="apidoc.element.jsxhint.utils.getCleanAbsolutePath">
+        function <span class="apidocSignatureSpan">jsxhint.utils.</span>getCleanAbsolutePath
+        <span class="apidocSignatureSpan">(fileName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getCleanAbsolutePath(fileName) {
+  return '/' + path.relative('/', path.resolve(fileName));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  copyConfig: function copyConfig(dir, file){
+var filePath = path.resolve(dir, file);
+if (checkedSupportFiles[filePath]) return;
+// Indicate that this is copied already to prevent unnecessary file operations.
+checkedSupportFiles[filePath] = true;
+
+if (fs.existsSync(filePath)) {
+  var destination = path.join(utils.tmpdir, utils.<span class="apidocCodeKeywordSpan">getCleanAbsolutePath</span>(filePath));
+  debug("Copying support file from %s to temp directory at %s.", filePath, destination);
+  if (file === '.jshintrc') {
+    try {
+      var jshintrc = jshintcli.loadConfig(filePath);
+      fs.writeJSONSync(destination, utils.ensureJshintrcOverrides(jshintrc));
+    } catch(e) {
+      console.error('Unable to parse .jshintrc file at %s. It must be valid JSON. Error: %s', filePath, e.message);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsxhint.utils.transformError" id="apidoc.element.jsxhint.utils.transformError">
+        function <span class="apidocSignatureSpan">jsxhint.utils.</span>transformError
+        <span class="apidocSignatureSpan">(fileName, error, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function transformError(fileName, error, opts){
+  var err = {
+    file: fileName,
+    error: {
+      line: error.lineNumber,
+      character: error.column,
+      reason: error.description,
+      code: 'E041'
+    }
+  };
+  if (opts['--babel'] || opts['--babel-experimental']) {
+    err.error.line = error.loc.line;
+    err.error.character = error.loc.column;
+    err.error.reason = error.stack.match(/.*:\s(.*)\s\(\d+:\d+\)/)[1];
+  }
+  return err;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      try {
+        return transformSource(source, opts);
+      } catch(e) {
+        // Seems that esprima has some problems with some js syntax.
+        if (opts['--transform-errors'] === 'always' ||
+            (opts['--transform-errors'] !== 'never' &amp;&amp; hasExtension)) {
+          console.error("Error while transforming file " + fileName + "\n", e.stack);
+          throw utils.<span class="apidocCodeKeywordSpan">transformError</span>(fileName, e, opts);
+        }
+      }
+    }
+    return source;
+  })
+  .nodeify(cb);
+}
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
